@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 // PUBLIC_INTERFACE
 export default function Layout() {
   /** Main app shell layout with retro/light header + sidebar. */
-  const { isAuthenticated, signIn, signOut } = useAuth();
+  const { isAuthenticated, setAuthToken, logout } = useAuth();
 
   return (
     <div className="rd-app">
@@ -23,11 +23,11 @@ export default function Layout() {
 
           <div className="rd-header-actions">
             {!isAuthenticated ? (
-              <button className="rd-btn rd-btn-primary" onClick={() => signIn("demo-token")}>
+              <button className="rd-btn rd-btn-primary" onClick={() => setAuthToken("demo-token")}>
                 Demo Sign In
               </button>
             ) : (
-              <button className="rd-btn" onClick={signOut}>
+              <button className="rd-btn" onClick={logout}>
                 Sign Out
               </button>
             )}
